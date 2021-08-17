@@ -1,0 +1,1741 @@
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Study of Bash shell, Bourne shell and C shell in Unix/Linux operating system 
+
+SHELL is a program which provides the interface between the user and an operating system. When the user 
+logs in OS starts a shell for user. Kernel controls all essential computer operations, and provides the 
+restriction to hardware access, coordinates all executing utilities, and manages Resources between 
+processes. Using kernel only user can access utilities provided by operating system. 
+
+Types of Shell: 
+
+The C Shell – Denoted as csh 
+
+Bill Joy created it at the University of California at Berkeley. It incorporated features such as aliases and 
+command history. It includes helpful programming features like built-in arithmetic and C-like expression 
+syntax. 
+
+In C shell: 
+
+Command full-path name is /bin/csh, 
+
+Non-root user default prompt is hostname %, 
+
+Root user default prompt is hostname #. 
+
+The Bourne Shell –Denoted as sh 
+
+It was written by Steve Bourne at AT&T Bell Labs. It is the original UNIX shell. It is faster and more 
+preferred. It lacks features for interactive use like the ability to recall previous commands. It also lacks built-
+in arithmetic and logical expression handling. It is default shell for Solaris OS. 
+
+For the Bourne shell the: 
+
+Command full-path name is /bin/sh and /sbin/sh, 
+
+Non-root user default prompt is $, 
+
+Root user default prompt is #. 
+
+GNU Bourne-Again Shell – Denoted as bash 
+
+It is compatible to the Bourne shell. It includes features from Korn and Bourne shell. 
+
+For the GNU Bourne-Again shell the: 
+
+Command full-path name is /bin/bash, 
+
+Default prompt for a non-root user is bash-g.gg$ 
+
+(g.ggindicates the shell version number like bash-3.50$), 
+
+Root user default prompt is bash-g.gg#. 
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Study of Unix/Linux file system (tree structure) 
+
+Unix file system is a logical method of organizing and storing large amounts of information in a 
+way that makes it easy to manage. A file is a smallest unit in which the information is stored. Unix 
+file system has several important features. All data in Unix is organized into files. All files are 
+organized into directories. These directories are organized into a tree-like structure called the file 
+system. 
+
+Files in Unix System are organized into multi-level hierarchy structure known as a directory tree. At 
+the very top of the file system is a directory called “root” which is represented by a “/”. All other files 
+are “descendants” of root. 
+
+ 
+
+Lightbox 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+. / : The slash / character alone denotes the root of the filesystem tree. 
+. /bin : Stands for “binaries” and contains certain fundamental utilities, such as ls or cp, which are 
+generally needed by all users. 
+. /boot : Contains all the files that are required for successful booting process. 
+. /dev : Stands for “devices”. Contains file representations of peripheral devices and pseudo-
+devices. 
+. /etc : Contains system-wide configuration files and system databases. Originally also contained 
+“dangerous maintenance utilities” such as init,but these have typically been moved to /sbin or 
+elsewhere. 
+. /home : Contains the home directories for the users. 
+. /lib : Contains system libraries, and some critical files such as kernel modules or device drivers. 
+. /media : Default mount point for removable devices, such as USB sticks, media players, etc. 
+. /mnt : Stands for “mount”. Contains filesystem mount points. These are used, for example, if the 
+system uses multiple hard disks or hard disk partitions. It is also often used for remote 
+(network) filesystems, CD-ROM/DVD drives, and so on. 
+. /proc : procfs virtual filesystem showing information about processes as files. 
+. /root : The home directory for the superuser “root” – that is, the system administrator. This 
+account’s home directory is usually on the initial filesystem, 
+. /tmp : A place for temporary files. 
+. /usr : Originally the directory holding user home directories,its use has changed. It now holds 
+executables, libraries, and shared resources that are not system critical, like the X Window 
+System, KDE, Perl, etc. However, on some Unix systems, some user accounts may still have a 
+home directory that is a direct subdirectory of /usr, such as the default as in Minix. (on modern 
+systems, these user accounts are often related to server or system use, and not directly used by 
+a person). 
+. /usr/bin : This directory stores all binary programs distributed with the operating system not 
+residing in /bin, /sbin or (rarely) /etc. 
+. /usr/include : Stores the development headers used throughout the system. Header files are 
+mostly used by the #include directive in C/C++ programming language. 
+
+
+
+. /usr/lib : Stores the required libraries and data files for programs stored within /usr or 
+elsewhere. 
+. /var : A short for “variable.” A place for files that may change often – especially in size, for 
+example e-mail sent to users on the system, or process-ID lock files. 
+. /var/log : Contains system log files. 
+. /var/mail : The place where all the incoming mails are stored. Users (other than root) can 
+access their own mail only. Often, this directory is a symbolic link to /var/spool/mail. 
+. /var/spool : Spool directory. Contains print jobs, mail spools and other queued tasks. 
+. /var/tmp : A place for temporary files which should be preserved between system reboots. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Write a C program that makes a copy of a file using standard I/O, and system calls . 
+
+ 
+
+Description: 
+
+Program: 
+
+#include<stdio.h> 
+
+ main() 
+
+{ 
+
+FILE *fp1,*fp2; 
+
+char ch; 
+
+fp1=fopen(“input.c”,”r”); 
+
+fp2=fopen(“output.c”,”w”); 
+
+ch=fgetc(fp1); 
+
+while(ch!=EOF) 
+
+{ 
+
+ fputc(ch,fp2); 
+
+ ch=fgetc(fp1); 
+
+} 
+
+fclose(fp1); 
+
+fclose(fp2); 
+
+printf(“File copied successfully”); 
+
+} 
+
+ 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+ Implementation of FCFS CPU scheduling algorithm in C. 
+
+ 
+
+Description: 
+
+ 
+
+ 
+Program 
+
+#include <stdio.h> 
+
+void main() 
+
+{ 
+
+ int n,bt[20],wt[20],tat[20],avwt=0,avtat=0,i,j; 
+
+ printf("Enter total number of processes(maximum 20):"); 
+
+ scanf("%d",&n); 
+
+ printf("\nEnter Process Burst Time\n"); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("P[%d]:",i); 
+
+ scanf("%d",&bt[i]); 
+
+ } 
+
+ wt[0]=0; //waiting time for first process is 0 
+
+ //calculating waiting time 
+
+ for(i=1;i<n;i++) 
+
+ { 
+
+ wt[i]=0; 
+
+ for(j=0;j<i;j++) 
+
+ wt[i]+=bt[j]; 
+
+ } 
+
+ printf("\nProcess\t\tBurst Time\tWaiting Time\tTurnaround Time"); 
+
+ //calculating turnaround time 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ tat[i]=bt[i]+wt[i]; 
+
+ avwt+=wt[i]; 
+
+ avtat+=tat[i]; 
+
+
+ printf("\nP[%d]\t\t%d\t\t%d\t\t%d",i+1,bt[i],wt[i],tat[i]); 
+
+ } 
+
+ avwt/=i; 
+
+ avtat/=i; 
+
+ printf("\n\nAverage Waiting Time:%d",avwt); 
+
+ printf("\nAverage Turnaround Time:%d",avtat); 
+
+ return 0; 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Implementation of SFC CPU scheduling algorithm in C. 
+
+ 
+
+Description: 
+
+ 
+
+ 
+
+Program 
+
+#include<stdio.h> 
+
+void main() 
+
+{ 
+
+ int bt[20],p[20],wt[20],tat[20],i,j,n,total=0,pos,temp; 
+
+ float avg_wt,avg_tat; 
+
+ printf("Enter number of process:"); 
+
+ scanf("%d",&n); 
+
+ 
+
+ printf("\nEnter Burst Time:\n"); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("p%d:",i+1); 
+
+ scanf("%d",&bt[i]); 
+
+ p[i]=i+1; //contains process number 
+
+ } 
+
+ 
+
+ //sorting burst time in ascending order using selection sort 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ pos=i; 
+
+ for(j=i+1;j<n;j++) 
+
+ { 
+
+ if(bt[j]<bt[pos]) 
+
+ pos=j; 
+
+ } 
+
+ temp=bt[i]; 
+
+
+ bt[i]=bt[pos]; 
+
+ bt[pos]=temp; 
+
+ 
+
+ temp=p[i]; 
+
+ p[i]=p[pos]; 
+
+ p[pos]=temp; 
+
+ } 
+
+ 
+
+ wt[0]=0; //waiting time for first process will be zero 
+
+ 
+
+ //calculate waiting time 
+
+ for(i=1;i<n;i++) 
+
+ { 
+
+ wt[i]=0; 
+
+ for(j=0;j<i;j++) 
+
+ wt[i]+=bt[j]; 
+
+ total+=wt[i]; 
+
+ } 
+
+ avg_wt=(float)total/n; //average waiting time 
+
+ total=0; 
+
+ printf("\nProcess\t Burst Time \tWaiting Time\tTurnaround Time"); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ tat[i]=bt[i]+wt[i]; //calculate turnaround time 
+
+ total+=tat[i]; 
+
+ printf("\np%d\t\t %d\t\t %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]); 
+
+ } 
+
+ 
+
+ avg_tat=(float)total/n; //average turnaround time 
+
+ printf("\n\nAverage Waiting Time=%f",avg_wt); 
+
+ printf("\nAverage Turnaround Time=%f\n",avg_tat); 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Implementation of Priority CPU scheduling algorithm in C 
+
+ 
+
+Description: 
+
+ 
+
+ 
+Program: 
+
+ 
+
+#include<stdio.h> 
+
+ int main() 
+
+{ 
+
+ int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat; 
+
+ printf("Enter Total Number of Process:"); 
+
+ scanf("%d",&n); 
+
+ printf("\nEnter Burst Time and Priority\n"); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("\nP[%d]\n",i+1); 
+
+ printf("Burst Time:"); 
+
+ scanf("%d",&bt[i]); 
+
+ printf("Priority:"); 
+
+ scanf("%d",&pr[i]); 
+
+ p[i]=i+1; //contains process number 
+
+ } 
+
+ //sorting burst time, priority and process number in ascending order using selection sort 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ pos=i; 
+
+ for(j=i+1;j<n;j++) 
+
+ { 
+
+ if(pr[j]<pr[pos]) 
+
+ pos=j; 
+
+ } 
+
+ temp=pr[i]; 
+
+ pr[i]=pr[pos]; 
+
+
+ pr[pos]=temp; 
+
+ temp=bt[i]; 
+
+ bt[i]=bt[pos]; 
+
+ bt[pos]=temp; 
+
+ 
+
+ temp=p[i]; 
+
+ p[i]=p[pos]; 
+
+ p[pos]=temp; 
+
+ } 
+
+ wt[0]=0; //waiting time for first process is zero 
+
+ //calculate waiting time 
+
+ for(i=1;i<n;i++) 
+
+ { 
+
+ wt[i]=0; 
+
+ for(j=0;j<i;j++) 
+
+ wt[i]+=bt[j]; 
+
+ 
+
+ total+=wt[i]; 
+
+ } 
+
+ avg_wt=total/n; //average waiting time 
+
+ total=0; 
+
+ printf("\nProcess\t Burst Time \tWaiting Time\tTurnaround Time"); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ tat[i]=bt[i]+wt[i]; //calculate turnaround time 
+
+ total+=tat[i]; 
+
+ printf("\nP[%d]\t\t %d\t\t %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]); 
+
+ } 
+
+ 
+
+ avg_tat=total/n; //average turnaround time 
+
+ printf("\n\nAverage Waiting Time=%d",avg_wt); 
+
+ printf("\nAverage Turnaround Time=%d\n",avg_tat); 
+
+ return 0; 
+
+} 
+
+Output: 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+ Implementation of Round Robin CPU scheduling algorithm in C 
+
+ 
+
+Description: 
+
+ 
+
+Program 
+
+#include<stdio.h> 
+
+ int main() 
+
+{ 
+
+ int i,j,n,time,remain,flag=0,time_quantum; 
+
+ int wait_time=0,turnaround_time=0,at[10],bt[10],rt[10]; 
+
+ printf("Enter Total Process:\t "); 
+
+ scanf("%d",&n); 
+
+ remain=n; 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("Enter Arrival Time and Burst Time for Process Process Number %d :",i+1); 
+
+ scanf("%d",&at[i]); 
+
+ scanf("%d",&bt[i]); 
+
+ rt[i]=bt[i]; 
+
+ } 
+
+ printf("Enter Time Quantum:\t"); 
+
+ scanf("%d",&time_quantum); 
+
+ printf("\n\nProcess\t|Turnaround Time|Waiting Time\n\n"); 
+
+ for(time=0,i=0;remain!=0;) 
+
+ { 
+
+ if(rt[i]<=time_quantum && rt[i]>0) 
+
+ { 
+
+ time+=rt[i]; 
+
+ rt[i]=0; 
+
+ flag=1; 
+
+ } 
+
+ else if(rt[i]>0) 
+
+ { 
+
+ rt[i]-=time_quantum; 
+
+
+ time+=time_quantum; 
+
+ } 
+
+ if(rt[i]==0 && flag==1) 
+
+ { 
+
+ remain--; 
+
+ printf("P[%d]\t|\t%d\t|\t%d\n",i+1,time-at[i],time-at[i]-bt[i]); 
+
+ wait_time+=time-at[i]-bt[i]; 
+
+ turnaround_time+=time-at[i]; 
+
+ flag=0; 
+
+ } 
+
+ if(i==n-1) 
+
+ i=0; 
+
+ else if(at[i+1]<=time) 
+
+ i++; 
+
+ else 
+
+ i=0; 
+
+ } 
+
+ printf("\nAverage Waiting Time= %f\n",wait_time*1.0/n); 
+
+ printf("Avg Turnaround Time = %f",turnaround_time*1.0/n); 
+
+ 
+
+ return 0; 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+ Implementation of fork (), wait (), exec() and exit (), System calls 
+
+Description: 
+
+ 
+Program 
+
+#include <sys/types.h> 
+
+#include <stdio.h> 
+
+#include <unistd.h> 
+
+int main() 
+
+{ 
+
+ int pid; 
+
+/* fork a child process */ 
+
+pid = fork(); 
+
+if (pid < 0) { /* error occurred */ 
+
+printf("Fork Failed"); 
+
+return 1; 
+
+} 
+
+else if (pid == 0) { /* child process */ 
+
+execlp("/bin/ls","ls",NULL); 
+
+} 
+
+else { /* parent process */ 
+
+/* parent will wait for the child to complete */ 
+
+wait(NULL); 
+
+printf("Child Complete"); 
+
+} 
+
+return 0; 
+
+} 
+
+OUTPUT: 
+
+ 
+
+ 
+
+ 
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Multiprogramming with a fixed number of tasks (MFT) 
+
+ 
+
+Description: 
+
+ 
+Program 
+
+#include<stdio.h> 
+
+#include<conio.h> 
+
+void main() 
+
+{ 
+
+ int ms,i,ps[20],n,size,p[20],s,intr=0; 
+
+ printf("Enter size of memory:"); 
+
+ scanf("%d",&ms); 
+
+ printf("Enter memory for OS:"); 
+
+ scanf("%d",&s); 
+
+ ms-=s; 
+
+ printf("Enter no.of partitions to be divided:"); 
+
+ scanf("%d",&n); 
+
+ size=ms/n; 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("Enter process and process size:"); 
+
+ scanf("%d%d",&p[i],&ps[i]); 
+
+ if(ps[i]<=size) 
+
+ { 
+
+ intr=intr+size-ps[i]; 
+
+ printf("process%d is allocated\n",p[i]); 
+
+} 
+
+else 
+
+printf("process%d is blocked\n",p[i]); 
+
+ } 
+
+ printf("\nTotal fragmentation is: %d",intr); 
+
+} 
+
+OUTPUT: 
+
+ 
+
+ 
+
+ 
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Multiprogramming with a variable number of tasks (MVT) 
+
+ 
+
+Description: 
+
+ 
+
+ 
+Program 
+
+#include<stdio.h> 
+
+#include<conio.h> 
+
+int main() 
+
+{ 
+
+ int i,m,n,tot,s[20]; 
+
+ printf("Enter total memory size:"); 
+
+ scanf("%d",&tot); 
+
+ printf("Enter no. of pages:"); 
+
+ scanf("%d",&n); 
+
+ printf("Enter memory for OS:"); 
+
+ scanf("%d",&m); 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ printf("Enter size of page%d:",i+1); 
+
+ scanf("%d",&s[i]); 
+
+ } 
+
+ tot=tot-m; 
+
+ for(i=0;i<n;i++) 
+
+ { 
+
+ if(tot>=s[i]) 
+
+ { 
+
+ printf("Allocate page %d\n",i+1); 
+
+ tot=tot-s[i]; 
+
+ } 
+
+ else 
+
+ printf("page p%d is blocked\n",i+1); 
+
+ } 
+
+ printf("External Fragmentation is=%d",tot); 
+
+} 
+
+OUTPUT: 
+
+ 
+
+ 
+ 
+
+ 
+
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Implement FIFO page replacement algorithms in C 
+
+ 
+
+Description: 
+
+ 
+
+ 
+Program 
+
+#include<stdio.h> 
+
+int main () 
+
+{ 
+
+ int i, j, n, ref_str[50], frame[10], no, k, avail, fcount = 0; // Declaration of variable required 
+
+ printf ("\n ENTER THE NUMBER OF PAGES:\n"); 
+
+ scanf ("%d", &n); // total no. of pages in reference string 
+
+ printf ("\n ENTER THE PAGE NUMBER :\n"); 
+
+ for (i = 1; i <= n; i++) // accept entire reference string 
+
+ scanf ("%d", &ref_str[i]); 
+
+ printf ("\n ENTER THE NUMBER OF FRAMES :"); 
+
+ scanf ("%d", &no); 
+
+ for (i = 0; i < no; i++) 
+
+ frame[i] = -1; // initialize all page frame to -1 
+
+ j = 0; // initialize page frame pointer 
+
+ printf ("\n ref string \t page frames \tHit/Fault\n"); 
+
+ for (i = 1; i <= n; i++) 
+
+ { 
+
+ printf ("%d\t\t", ref_str[i]); 
+
+ avail = 0; // Default value of available flag is 0 
+
+ for (k = 0; k < no; k++) 
+
+ if (frame[k] == ref_str[i]) // input of page requested is compared with existing content of 
+FRAME 
+
+ { 
+
+ avail = 1; // as page found available is turned 1 
+
+ for (k = 0; k < no; k++) 
+
+ printf ("%d\t", frame[k]); // Print Current state of FRAME 
+
+ printf ("H"); // Indication of Page Hit 
+
+ } 
+
+ if (avail == 0) // input page requested NOT existing in FRAME 
+
+ { 
+
+ frame[j] = ref_str[i]; // place page requested at j th location in FRAME 
+
+ j = (j + 1) % no; // Update J for next Cycle 
+
+ fcount++; // Increment Counter for Page Fault 
+
+ for (k = 0; k < no; k++) 
+
+ printf ("%d\t", frame[k]); // Print Current state of FRAME 
+
+
+ printf ("F"); // Indication of Page Fault 
+
+ } 
+
+ printf ("\n"); 
+
+ } 
+
+ printf ("Page Fault Is %d", fcount); 
+
+ return 0; 
+
+} 
+
+OUTPUT: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Implement LRU page replacement algorithm in C 
+
+ 
+
+Description: 
+
+ 
+
+ Program 
+
+#include<stdio.h> 
+
+void main ( ) 
+
+{ 
+
+int a[50],c[10],i,j,k,ps,nop,npf=0,nps=0; 
+
+printf("\n\t Enter no of pages :"); 
+
+scanf("%d",&nop); 
+
+printf("\n\tEnter pages :"); 
+
+for(i=0;i<nop;i++) 
+
+ { 
+
+ scanf("%d",&a[i]); 
+
+ } 
+
+ printf("\n\tEnter no of page frames : "); 
+
+ scanf ("%d",&ps); 
+
+ for(i=0;i<nop;i++) 
+
+ { 
+
+ for(k=0;c[k]!=a[i]&&k<nps;k++); 
+
+ if(k==nps) 
+
+ { 
+
+ npf++; 
+
+ if(nps==ps) 
+
+ for(k=0;k<nps-1;k++) 
+
+ { 
+
+ c[k]=c[k+1]; 
+
+ } 
+
+ 
+
+ c[k]=a[i]; 
+
+ 
+
+ if(nps<ps) 
+
+ { 
+
+ nps++; 
+
+ } 
+
+ } 
+
+ else 
+
+
+ { 
+
+ for(j=k;j<nps-1;j++) 
+
+ { 
+
+ c[j]=c[j+1]; 
+
+ } 
+
+ c[j]=a[i]; 
+
+ } 
+
+ printf("\n") ; 
+
+ for(k=0;k<nps;k++) 
+
+ printf("%d" ,c[k]) ; 
+
+ } 
+
+printf (" \n\tNo of page faults occurred are %d",npf); 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Experiment No: Date: 
+
+Aim: 
+
+ Write a C program to simulate producer and consumer problem using semaphores. 
+
+ 
+
+Description: 
+
+ 
+ 
+
+Program 
+
+#include<stdio.h> 
+
+#include<stdlib.h> 
+
+ 
+
+int mutex=1,full=0,empty=3,x=0; 
+
+ 
+
+int main() 
+
+{ 
+
+int n; 
+
+void producer(); 
+
+void consumer(); 
+
+int wait(int); 
+
+int signal(int); 
+
+printf("\n1.Producer\n2.Consumer\n3.Exit"); 
+
+while(1) 
+
+{ 
+
+printf("\nEnter your choice:"); 
+
+scanf("%d",&n); 
+
+switch(n) 
+
+{ 
+
+case 1: if((mutex==1)&&(empty!=0)) 
+
+producer(); 
+
+else 
+
+printf("Buffer is full!!"); 
+
+break; 
+
+case 2: if((mutex==1)&&(full!=0)) 
+
+consumer(); 
+
+else 
+
+printf("Buffer is empty!!"); 
+
+break; 
+
+case 3: 
+
+exit(0); 
+
+break; 
+
+} 
+
+} 
+
+return 0; 
+
+} 
+
+
+ 
+
+int wait(int s) 
+
+{ 
+
+return (--s); 
+
+} 
+
+ 
+
+int signal(int s) 
+
+{ 
+
+return(++s); 
+
+} 
+
+ 
+
+void producer() 
+
+{ 
+
+mutex=wait(mutex); 
+
+full=signal(full); 
+
+empty=wait(empty); 
+
+x++; 
+
+printf("\nProducer produces the item %d",x); 
+
+mutex=signal(mutex); 
+
+} 
+
+ 
+
+void consumer() 
+
+{ 
+
+mutex=wait(mutex); 
+
+full=wait(full); 
+
+empty=signal(empty); 
+
+printf("\nConsumer consumes item %d",x); 
+
+x--; 
+
+mutex=signal(mutex); 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+ 
+Experiment No: Date: 
+
+ 
+
+POSIX thread (pthread) libraries 
+
+. The POSIX thread libraries are a standards based thread API for C/C++. 
+. It allows one to spawn a new concurrent process flow. 
+. It is most effective on multi-processor or multi-core systems where the process flow can be 
+scheduled to run on another processor thus gaining speed through parallel or distributed 
+processing. 
+. Threads require less overhead than "forking" or spawning a new process because the system does 
+not initialize a new system virtual memory space and environment for the process. 
+
+
+ 
+Thread Basics: 
+
+. Thread operations include thread creation, termination, synchronization (joins,blocking), 
+scheduling, data management and process interaction. 
+. A thread does not maintain a list of created threads, nor does it know the thread that created it. 
+. All threads within a process share the same address space. 
+. Threads in the same process share: 
+o Process instructions 
+o Most data 
+o open files (descriptors) 
+o signals and signal handlers 
+o current working directory 
+o User and group id 
+
+
+. Each thread has a unique: 
+o Thread ID 
+o set of registers, stack pointer 
+o stack for local variables, return addresses 
+o signal mask 
+o priority 
+o Return value: errno 
+o pthread functions return "0" if OK. 
+
+
+
+
+ 
+
+ 
+
+Creation of Pthreads 
+
+int pthread_create(pthread_t *restrict tid, const pthread_attr_t 
+
+ *restrict tattr, void*(*start_routine)(void *), void *restrict arg); 
+
+ 
+
+. The pthread_create() function is called with attr that has the necessary state 
+behavior. start_routine is the function with which the new thread begins execution. 
+When start_routine returns, the thread exits with the exit status set to the value returned 
+by start_routine. 
+. When pthread_create() is successful, the ID of the created thread is stored in the location 
+referred to as tid. 
+. When you call pthread_create() with either a NULL attribute argument or a default 
+attribute, pthread_create() creates a default thread. When tattr is initialized, the thread 
+acquires the default behavior. 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Aim: 
+
+ Write C program to create a thread using pthreads library and let it run its function. 
+
+ 
+
+ 
+
+Program: 
+
+#include<stdio.h> 
+
+#include<stdlib.h> 
+
+#include<pthread.h> 
+
+#include<unistd.h> 
+
+void *mythread(void *vargp) 
+
+{ 
+
+ sleep(1); 
+
+ printf("welcome to Pthread!! ·\n"); 
+
+ return NULL; 
+
+} 
+
+int main() 
+
+{ 
+
+ pthread_t tid; 
+
+ printf("before thread\n"); 
+
+ pthread_create(&tid,NULL,mythread,NULL); 
+
+ pthread_join(tid,NULL); 
+
+ exit(0); 
+
+} 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Experiment No: Date: 
+
+ 
+
+Aim: 
+
+Write a C program to illustrate concurrent execution of threads using pthreads library 
+
+ 
+
+Program 
+
+#include<stdio.h> 
+
+#include<stdlib.h> 
+
+#include<pthread.h> 
+
+void *mythread1(void *vargp) 
+
+{ 
+
+ int i; 
+
+ printf("thread1\n"); 
+
+ for(i=1;i<=10;i++) 
+
+ printf("i=%d\n",i); 
+
+ printf("exit from thread1\n"); 
+
+ return NULL; 
+
+} 
+
+ 
+
+void *mythread2(void *vargp) 
+
+{ 
+
+ int j; 
+
+ printf("thread2 \n"); 
+
+ for(j=1;j<=10;j++) 
+
+ printf("j=%d\n",j); 
+
+ printf("Exit from thread2\n"); 
+
+ return NULL; 
+
+} 
+
+ 
+
+int main() 
+
+{ 
+
+ pthread_t tid; 
+
+ printf("before thread\n"); 
+
+ pthread_create(&tid,NULL,mythread2,NULL); 
+
+ pthread_join(tid,NULL); 
+
+ pthread_create(&tid,NULL,mythread1,NULL); 
+
+ pthread_join(tid,NULL); 
+
+ exit(0); 
+
+} 
+
+ 
+
+Output: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Senario 2: 
+
+ 
+
+#include<stdio.h> 
+
+#include<stdlib.h> 
+
+#include<pthread.h> 
+
+#include<unistd.h> 
+
+void *myturn(void *arg) 
+
+{ 
+
+ for(int i=0;i<10;i++) 
+
+ { 
+
+ sleep(1); 
+
+ printf("My Turn! %d\n",i); 
+
+ } 
+
+ return NULL; 
+
+} 
+
+void yourturn() 
+
+{ 
+
+ for(int i=0;i<3;i++) 
+
+ { 
+
+ sleep(2); 
+
+ printf("Your Turn! %d\n",i); 
+
+ } 
+
+} 
+
+int main() 
+
+{ 
+
+ pthread_t newthread; 
+
+ 
+
+ pthread_create(&newthread,NULL,myturn,NULL); 
+
+ 
+
+ yourturn(); 
+
+ pthread_join(&newthread,NULL); 
+
+} 
+
+ 
+
+Output: 
+
+
